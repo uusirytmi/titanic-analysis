@@ -1,0 +1,75 @@
+======================================================================
+Titanic Survival Prediction — results 生成ログ
+======================================================================
+train=(891, 12), test=(418, 11), 全体生存率=0.384
+
+[Phase 1] ベースライン 3 モデル (5-fold CV)
+      モデル  CV平均Accuracy   標準偏差
+ロジスティック回帰        0.8047 0.0316
+ランダムフォレスト        0.7991 0.0259
+      決定木        0.7901 0.0255
+
+[Phase 1.5] v2手設計特徴 × デフォルト3モデル (5-fold CV)
+      モデル  CV平均Accuracy   標準偏差
+ランダムフォレスト        0.8193 0.0155
+ロジスティック回帰        0.8170 0.0106
+      決定木        0.7811 0.0178
+
+[Phase 2-a] チューニング済みモデル (5-fold CV)
+             モデル  CV平均Accuracy   標準偏差
+      RF (tuned)        0.8440 0.0166
+ XGBoost (tuned)        0.8440 0.0201
+LightGBM (tuned)        0.8383 0.0228
+     SVM (tuned)        0.8238 0.0118
+
+[Phase 2-b] アンサンブル (5-fold CV)
+                      モデル  CV平均Accuracy   標準偏差
+            Voting(LGB重視)        0.8406 0.0202
+Voting(RF,XGB,LGB,SVM,LR)        0.8372 0.0204
+          Voting(+ET,+GB)        0.8361 0.0234
+
+[精度比較表] results/accuracy_comparison.csv に保存
+               phase                     model  cv_accuracy    std
+      Phase2 (tuned)                RF (tuned)       0.8440 0.0166
+      Phase2 (tuned)           XGBoost (tuned)       0.8440 0.0201
+   Phase2 (ensemble)             Voting(LGB重視)       0.8406    NaN
+      Phase2 (tuned)          LightGBM (tuned)       0.8383 0.0228
+   Phase2 (ensemble) Voting(RF,XGB,LGB,SVM,LR)       0.8372    NaN
+   Phase2 (ensemble)           Voting(+ET,+GB)       0.8361    NaN
+      Phase2 (tuned)               SVM (tuned)       0.8238 0.0118
+Phase1 (v2 human FE)                 ランダムフォレスト       0.8193 0.0155
+Phase1 (v2 human FE)                 ロジスティック回帰       0.8170 0.0106
+Phase1 (v1 baseline)                 ロジスティック回帰       0.8047 0.0316
+Phase1 (v1 baseline)                 ランダムフォレスト       0.7991 0.0259
+Phase1 (v1 baseline)                       決定木       0.7901 0.0255
+Phase1 (v2 human FE)                       決定木       0.7811 0.0178
+
+>>> 最高精度: RF (tuned) (Phase2 (tuned)) = 0.8440
+
+[特徴量重要度] results/feature_importance.png に保存
+Title_x_Pclass    0.1408
+Title             0.1289
+Fare_per_person   0.0963
+FamilySurvival    0.0853
+Age_x_Pclass      0.0838
+Sex_x_Pclass      0.0827
+Fare              0.0670
+Age               0.0646
+Sex               0.0614
+Pclass            0.0405
+TicketGroup       0.0401
+family_size       0.0323
+Deck              0.0178
+SibSp             0.0136
+Embarked          0.0133
+FareBin           0.0101
+AgeBin            0.0094
+cabin_missing     0.0072
+Parch             0.0032
+IsAlone           0.0017
+
+[提出] data/submission.csv を RF(tuned) で生成
+
+[生存要因] 属性別 生存率
+  性別: {'female': 0.742, 'male': 0.189}
+  クラス: {1: 0.63, 2: 0.473, 3: 0.242}

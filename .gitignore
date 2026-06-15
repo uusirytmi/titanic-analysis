@@ -1,0 +1,16 @@
+# Kaggle data (規約により再配布しない。Kaggle から各自ダウンロードして data/ に配置)
+data/train.csv
+data/test.csv
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+*.egg-info/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
