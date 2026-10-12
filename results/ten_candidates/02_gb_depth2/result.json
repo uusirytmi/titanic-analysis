@@ -1,0 +1,16 @@
+{
+  "trial": 2,
+  "candidate": "gb_depth2",
+  "primary_accuracy": 0.8294101646684661,
+  "fold_sd": 0.024105450554638183,
+  "seed_sd": 0.0019483637929159764,
+  "seed_min": 0.8271608813006089,
+  "seed_max": 0.8305756073065094,
+  "delta_baseline": -0.007484359634256073,
+  "worse_folds": 8,
+  "log_loss": 0.4020378548597018,
+  "seconds": 9.033248097000069,
+  "exceeded": false,
+  "outer_fits": 15,
+  "component_fits": 15
+}

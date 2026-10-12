@@ -1,0 +1,16 @@
+{
+  "trial": 6,
+  "candidate": "extra_trees",
+  "primary_accuracy": 0.8136944740861632,
+  "fold_sd": 0.02640544735863698,
+  "seed_sd": 0.008960539399982188,
+  "seed_min": 0.8047454648170234,
+  "seed_max": 0.822666499278137,
+  "delta_baseline": -0.023200050216558923,
+  "worse_folds": 14,
+  "log_loss": 0.6625767415094618,
+  "seconds": 26.074930643000243,
+  "exceeded": false,
+  "outer_fits": 15,
+  "component_fits": 15
+}

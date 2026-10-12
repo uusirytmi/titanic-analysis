@@ -1,0 +1,16 @@
+{
+  "trial": 7,
+  "candidate": "svc_c3",
+  "primary_accuracy": 0.8312786391312534,
+  "fold_sd": 0.025271430149660903,
+  "seed_sd": 0.004634688465711662,
+  "seed_min": 0.8260812252840374,
+  "seed_max": 0.8349821103508882,
+  "delta_baseline": -0.005615885171468634,
+  "worse_folds": 9,
+  "log_loss": 0.43152414843167897,
+  "seconds": 2.6372845409996444,
+  "exceeded": false,
+  "outer_fits": 15,
+  "component_fits": 15
+}

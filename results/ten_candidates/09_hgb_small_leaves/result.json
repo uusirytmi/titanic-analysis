@@ -1,0 +1,16 @@
+{
+  "trial": 9,
+  "candidate": "hgb_small_leaves",
+  "primary_accuracy": 0.8335258301424896,
+  "fold_sd": 0.030453818018998866,
+  "seed_sd": 0.007324985521057127,
+  "seed_min": 0.8259996233758082,
+  "seed_max": 0.840631473228297,
+  "delta_baseline": -0.0033686941602326806,
+  "worse_folds": 8,
+  "log_loss": 0.40824754358783,
+  "seconds": 4.327767890999894,
+  "exceeded": false,
+  "outer_fits": 15,
+  "component_fits": 15
+}

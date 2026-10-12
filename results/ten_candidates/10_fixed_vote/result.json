@@ -1,0 +1,16 @@
+{
+  "trial": 10,
+  "candidate": "fixed_vote",
+  "primary_accuracy": 0.8368903395894797,
+  "fold_sd": 0.026845724936294238,
+  "seed_sd": 0.003412908171846892,
+  "seed_min": 0.8339338396836358,
+  "seed_max": 0.8406251961584333,
+  "delta_baseline": -4.184713242527671e-06,
+  "worse_folds": 7,
+  "log_loss": 0.3984058733270847,
+  "seconds": 31.406522854000286,
+  "exceeded": false,
+  "outer_fits": 15,
+  "component_fits": 45
+}

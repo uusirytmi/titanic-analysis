@@ -1,0 +1,16 @@
+{
+  "trial": 4,
+  "candidate": "rf_depth8",
+  "primary_accuracy": 0.8327830435419413,
+  "fold_sd": 0.025578720991317767,
+  "seed_sd": 0.006838211022966086,
+  "seed_min": 0.8282656455966355,
+  "seed_max": 0.8406503044378884,
+  "delta_baseline": -0.004111480760780887,
+  "worse_folds": 7,
+  "log_loss": 0.4126983313658358,
+  "seconds": 26.252188180000303,
+  "exceeded": false,
+  "outer_fits": 15,
+  "component_fits": 15
+}

@@ -1,0 +1,16 @@
+{
+  "trial": 3,
+  "candidate": "gb_leaf10",
+  "primary_accuracy": 0.8353984893185195,
+  "fold_sd": 0.028999916874716897,
+  "seed_sd": 0.004216043556794538,
+  "seed_min": 0.8305756073065093,
+  "seed_max": 0.8383842822170611,
+  "delta_baseline": -0.0014960349842027285,
+  "worse_folds": 8,
+  "log_loss": 0.4044811434512602,
+  "seconds": 10.265579989999878,
+  "exceeded": false,
+  "outer_fits": 15,
+  "component_fits": 15
+}

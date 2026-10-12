@@ -1,0 +1,16 @@
+{
+  "trial": 5,
+  "candidate": "rf_leaf2",
+  "primary_accuracy": 0.8271755277969577,
+  "fold_sd": 0.02517812083410402,
+  "seed_sd": 0.006835139199938799,
+  "seed_min": 0.8226539451384094,
+  "seed_max": 0.8350386039796623,
+  "delta_baseline": -0.009718996505764473,
+  "worse_folds": 8,
+  "log_loss": 0.44724132836648456,
+  "seconds": 29.001808563000395,
+  "exceeded": false,
+  "outer_fits": 15,
+  "component_fits": 15
+}
