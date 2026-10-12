@@ -1,0 +1,15 @@
+test_all_failed_candidates_are_persisted (test_fold_safe.FailureRecording.test_all_failed_candidates_are_persisted) ... fold=0 deliberate_failure done
+ok
+test_clone_refits_on_training_fold_and_ignores_target (test_fold_safe.FoldSafety.test_clone_refits_on_training_fold_and_ignores_target) ... ok
+test_statistics_and_categories_exclude_validation (test_fold_safe.FoldSafety.test_statistics_and_categories_exclude_validation) ... ok
+test_transform_is_independent_of_batch_distribution_and_order (test_fold_safe.FoldSafety.test_transform_is_independent_of_batch_distribution_and_order) ... ok
+test_connected_components_close_transitively (test_next_round.NextRoundSafety.test_connected_components_close_transitively) ... ok
+test_counts_are_training_only_leave_self_out_and_batch_invariant (test_next_round.NextRoundSafety.test_counts_are_training_only_leave_self_out_and_batch_invariant) ... ok
+test_unseen_group_has_no_training_companions (test_next_round.NextRoundSafety.test_unseen_group_has_no_training_companions) ... ok
+test_weights_use_only_supplied_inner_oof_and_ties_are_fixed (test_next_round.NextRoundSafety.test_weights_use_only_supplied_inner_oof_and_ties_are_fixed) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.817s
+
+OK
+PASS groups: 120 scores, 21384 OOF rows, disjoint splits, group isolation, hashes, metrics, selection

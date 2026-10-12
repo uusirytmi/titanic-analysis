@@ -1,0 +1,39 @@
+groups {'protocol': 'stratified', 'seed': 20261012, 'fold': 0} completed
+groups {'protocol': 'stratified', 'seed': 20261012, 'fold': 1} completed
+groups {'protocol': 'stratified', 'seed': 20261012, 'fold': 2} completed
+groups {'protocol': 'stratified', 'seed': 20261012, 'fold': 3} completed
+groups {'protocol': 'stratified', 'seed': 20261012, 'fold': 4} completed
+groups {'protocol': 'stratified', 'seed': 20261029, 'fold': 0} completed
+groups {'protocol': 'stratified', 'seed': 20261029, 'fold': 1} completed
+groups {'protocol': 'stratified', 'seed': 20261029, 'fold': 2} completed
+groups {'protocol': 'stratified', 'seed': 20261029, 'fold': 3} completed
+groups {'protocol': 'stratified', 'seed': 20261029, 'fold': 4} completed
+groups {'protocol': 'stratified', 'seed': 20261113, 'fold': 0} completed
+groups {'protocol': 'stratified', 'seed': 20261113, 'fold': 1} completed
+groups {'protocol': 'stratified', 'seed': 20261113, 'fold': 2} completed
+groups {'protocol': 'stratified', 'seed': 20261113, 'fold': 3} completed
+groups {'protocol': 'stratified', 'seed': 20261113, 'fold': 4} completed
+groups {'protocol': 'group', 'seed': 20261012, 'fold': 0} completed
+groups {'protocol': 'group', 'seed': 20261012, 'fold': 1} completed
+groups {'protocol': 'group', 'seed': 20261012, 'fold': 2} completed
+groups {'protocol': 'group', 'seed': 20261012, 'fold': 3} completed
+groups {'protocol': 'group', 'seed': 20261012, 'fold': 4} completed
+groups {'protocol': 'group', 'seed': 20261029, 'fold': 0} completed
+groups {'protocol': 'group', 'seed': 20261029, 'fold': 1} completed
+groups {'protocol': 'group', 'seed': 20261029, 'fold': 2} completed
+groups {'protocol': 'group', 'seed': 20261029, 'fold': 3} completed
+groups {'protocol': 'group', 'seed': 20261029, 'fold': 4} completed
+groups {'protocol': 'group', 'seed': 20261113, 'fold': 0} completed
+groups {'protocol': 'group', 'seed': 20261113, 'fold': 1} completed
+groups {'protocol': 'group', 'seed': 20261113, 'fold': 2} completed
+groups {'protocol': 'group', 'seed': 20261113, 'fold': 3} completed
+groups {'protocol': 'group', 'seed': 20261113, 'fold': 4} completed
+  protocol      candidate  accuracy  fold_sd     delta  delta_fold_sd  worse_folds  log_loss  seconds  seed_sd  delta_seed_sd
+     group hgb_companions  0.814091 0.024817 -0.005620       0.012717            8  0.464594 5.018789 0.011226       0.004905
+     group  hgb_reference  0.819711 0.024704  0.000000       0.000000            0  0.456118 3.313689 0.007205       0.000000
+     group  rf_companions  0.821958 0.023133  0.002247       0.020715            6  0.428103 3.894210 0.007458       0.010677
+     group      rf_family  0.833161 0.020188  0.013450       0.017483            1  0.424792 3.418447 0.006801       0.011091
+stratified hgb_companions  0.827153 0.018720 -0.009742       0.013157           13  0.425087 6.077151 0.004045       0.002582
+stratified  hgb_reference  0.836895 0.022033  0.000000       0.000000            0  0.420217 4.188750 0.004238       0.000000
+stratified  rf_companions  0.831647 0.018512 -0.005248       0.019023            8  0.409946 4.547968 0.006232       0.007465
+stratified      rf_family  0.834647 0.024614 -0.002247       0.017457            8  0.413203 4.038544 0.001279       0.005124
