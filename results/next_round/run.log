@@ -1,0 +1,21 @@
+ensemble {'protocol': 'stratified', 'seed': 20261012, 'fold': 0} completed
+ensemble {'protocol': 'stratified', 'seed': 20261012, 'fold': 1} completed
+ensemble {'protocol': 'stratified', 'seed': 20261012, 'fold': 2} completed
+ensemble {'protocol': 'stratified', 'seed': 20261012, 'fold': 3} completed
+ensemble {'protocol': 'stratified', 'seed': 20261012, 'fold': 4} completed
+ensemble {'protocol': 'stratified', 'seed': 20261029, 'fold': 0} completed
+ensemble {'protocol': 'stratified', 'seed': 20261029, 'fold': 1} completed
+ensemble {'protocol': 'stratified', 'seed': 20261029, 'fold': 2} completed
+ensemble {'protocol': 'stratified', 'seed': 20261029, 'fold': 3} completed
+ensemble {'protocol': 'stratified', 'seed': 20261029, 'fold': 4} completed
+ensemble {'protocol': 'stratified', 'seed': 20261113, 'fold': 0} completed
+ensemble {'protocol': 'stratified', 'seed': 20261113, 'fold': 1} completed
+ensemble {'protocol': 'stratified', 'seed': 20261113, 'fold': 2} completed
+ensemble {'protocol': 'stratified', 'seed': 20261113, 'fold': 3} completed
+ensemble {'protocol': 'stratified', 'seed': 20261113, 'fold': 4} completed
+  protocol       candidate  accuracy  fold_sd     delta  delta_fold_sd  worse_folds  log_loss   seconds  seed_sd  delta_seed_sd
+stratified   equal_average  0.835390 0.024900 -0.001504       0.015805            7  0.402603 10.582623 0.004274       0.004252
+stratified   hgb_reference  0.836895 0.022033  0.000000       0.000000            0  0.420217  4.673162 0.004238       0.000000
+stratified  inner_weighted  0.835022 0.022689 -0.001873       0.014943            6  0.405222 39.510228 0.001133       0.005168
+stratified lr_interactions  0.824910 0.027187 -0.011985       0.025852           11  0.418857  0.912467 0.004045       0.008092
+stratified       rf_family  0.834647 0.024614 -0.002247       0.017457            8  0.413203  4.996994 0.001279       0.005124
