@@ -1,0 +1,20 @@
+seeds {'protocol': 'stratified', 'seed': 20261012, 'fold': 0} completed
+seeds {'protocol': 'stratified', 'seed': 20261012, 'fold': 1} completed
+seeds {'protocol': 'stratified', 'seed': 20261012, 'fold': 2} completed
+seeds {'protocol': 'stratified', 'seed': 20261012, 'fold': 3} completed
+seeds {'protocol': 'stratified', 'seed': 20261012, 'fold': 4} completed
+seeds {'protocol': 'stratified', 'seed': 20261029, 'fold': 0} completed
+seeds {'protocol': 'stratified', 'seed': 20261029, 'fold': 1} completed
+seeds {'protocol': 'stratified', 'seed': 20261029, 'fold': 2} completed
+seeds {'protocol': 'stratified', 'seed': 20261029, 'fold': 3} completed
+seeds {'protocol': 'stratified', 'seed': 20261029, 'fold': 4} completed
+seeds {'protocol': 'stratified', 'seed': 20261113, 'fold': 0} completed
+seeds {'protocol': 'stratified', 'seed': 20261113, 'fold': 1} completed
+seeds {'protocol': 'stratified', 'seed': 20261113, 'fold': 2} completed
+seeds {'protocol': 'stratified', 'seed': 20261113, 'fold': 3} completed
+seeds {'protocol': 'stratified', 'seed': 20261113, 'fold': 4} completed
+  protocol       candidate  accuracy  fold_sd     delta  delta_fold_sd  worse_folds  log_loss  seconds  seed_sd  delta_seed_sd
+stratified   hgb_reference  0.836895 0.022033  0.000000       0.000000            0  0.420217 3.136962 0.004238       0.000000
+stratified hgb_regularized  0.835028 0.027063 -0.001866       0.017064            9  0.403836 2.160437 0.002219       0.002814
+stratified  lr_regularized  0.827529 0.024687 -0.009365       0.024497           10  0.418881 0.563076 0.002787       0.006824
+stratified       rf_family  0.834647 0.024614 -0.002247       0.017457            8  0.413203 3.464891 0.001279       0.005124

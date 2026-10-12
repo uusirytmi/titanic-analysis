@@ -1,7 +1,25 @@
 # Titanic Survival Prediction
 
 Titanic 教材を使い、モデルと特徴量を比較する実験リポジトリです。
-**最新の比較では、固定候補の外側 CV 最高値は 0.8351、内側で候補を選ぶ手順の外側評価は 0.8205 でした。Kaggle 採点は未確認です。**
+**前回の比較では、固定候補の外側 CV 最高値は 0.8351、内側で候補を選ぶ手順の外側評価は 0.8205 でした。Kaggle 採点は未確認です。**
+
+## 追加比較: seeds（2026-10-12）
+
+この枝は前回 commit `1d0eef8` から分岐した3仮説のうち `seeds` を実行したものです。
+[共通計画](experiments/NEXT_PLAN.md)、[3枝の比較と解釈](results/next_round/REPORT.md)、
+[比較CSV](results/next_round/comparison.csv)、[この枝の実測結果](results/next_round/seeds/summary.csv)を参照してください。
+通常の層化CVでは共通HGBが平均0.8369で追加候補は上回らず、別目的のグループCVではRF家族が0.8332（同条件HGB比+0.0135）でした。
+過去OOFを踏まえた探索であり、独立データでの確証ではありません。
+
+再現（データと依存関係の準備は下記参照）:
+
+```bash
+python -m unittest discover -s tests -v
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m experiments.next_round seeds --out results/next_round/new_run
+python -m experiments.audit_next results/next_round/seeds
+```
+
+以下は共通出発点の前回実験の記録です。
 
 ## 2026-10-12: fold 内前処理による比較
 
@@ -54,7 +72,7 @@ python -m experiments.audit_results
 
 今回のローカル入力は[公開ミラー](https://github.com/agconti/kaggle-titanic/tree/master/data)から取得し、SHA256をmanifestに記録しました。元CSVはgitignore対象のままです。新しい実行は既存出力先を上書きしません。テストはfold外の極端値・未知カテゴリが学習済み統計に混入しないこと、同じ行の変換が同時入力の分布や順序に依存しないこと、cloneが各foldで再学習すること、全候補失敗時の記録を確認します。監査は全分割の非重複・包含、17方式×891行のOOF、選択規則、成績の再計算とハッシュを検査します。
 
-test.csv は各モデルの変換・予測が有限値になることだけを確認しました。提出ファイルの新規作成・Kaggle提出・採点、別seedでの反復、家族単位分割、外部検証は行っていません。
+前回run1では test.csv の変換・予測が有限値になることだけを確認し、別seed反復・家族単位分割は未実施でした。今回の追加比較では3seed反復と家族・同行者のグループ分割を実施しました。提出ファイルの新規作成・Kaggle提出・採点、外部検証は今回も行っていません。
 
 ## 過去の実験（評価条件が異なる参考記録）
 

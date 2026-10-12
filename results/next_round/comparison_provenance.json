@@ -1,0 +1,29 @@
+{
+  "seeds": {
+    "parent": "1d0eef8cbc074bcb6332d8c8f957ccf0fa2ed2a3",
+    "fit_count": 60,
+    "seconds": 24.37604939899984,
+    "failures": 0,
+    "code_sha256": "8d4e6799111e88a14e7ea1c61b45091ef3d9529c3e2746ae1bf61c80bd1ebf70",
+    "plan_sha256": "1f1eaa80c059a05c313b49c4906819800fb6e2517ef68d957e28811278ffbc1a",
+    "splits_sha256": "89e506f8414ee0ca61a60517727be1f6902e9ebef111568b9879bcf70e6b7d6c"
+  },
+  "groups": {
+    "parent": "1d0eef8cbc074bcb6332d8c8f957ccf0fa2ed2a3",
+    "fit_count": 120,
+    "seconds": 36.575250101000165,
+    "failures": 0,
+    "code_sha256": "8d4e6799111e88a14e7ea1c61b45091ef3d9529c3e2746ae1bf61c80bd1ebf70",
+    "plan_sha256": "1f1eaa80c059a05c313b49c4906819800fb6e2517ef68d957e28811278ffbc1a",
+    "splits_sha256": "89e506f8414ee0ca61a60517727be1f6902e9ebef111568b9879bcf70e6b7d6c"
+  },
+  "ensemble": {
+    "parent": "1d0eef8cbc074bcb6332d8c8f957ccf0fa2ed2a3",
+    "fit_count": 180,
+    "seconds": 41.694057792999956,
+    "failures": 0,
+    "code_sha256": "8d4e6799111e88a14e7ea1c61b45091ef3d9529c3e2746ae1bf61c80bd1ebf70",
+    "plan_sha256": "1f1eaa80c059a05c313b49c4906819800fb6e2517ef68d957e28811278ffbc1a",
+    "splits_sha256": "89e506f8414ee0ca61a60517727be1f6902e9ebef111568b9879bcf70e6b7d6c"
+  }
+}
