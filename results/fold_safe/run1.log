@@ -1,0 +1,94 @@
+fold=0 lr_base done
+fold=0 rf_base done
+fold=0 hgb_base done
+fold=0 lr_title done
+fold=0 rf_title done
+fold=0 hgb_title done
+fold=0 lr_family done
+fold=0 rf_family done
+fold=0 hgb_family done
+fold=0 lr_fare done
+fold=0 rf_fare done
+fold=0 hgb_fare done
+fold=0 lr_interactions done
+fold=0 rf_interactions done
+fold=0 hgb_interactions done
+fold=1 lr_base done
+fold=1 rf_base done
+fold=1 hgb_base done
+fold=1 lr_title done
+fold=1 rf_title done
+fold=1 hgb_title done
+fold=1 lr_family done
+fold=1 rf_family done
+fold=1 hgb_family done
+fold=1 lr_fare done
+fold=1 rf_fare done
+fold=1 hgb_fare done
+fold=1 lr_interactions done
+fold=1 rf_interactions done
+fold=1 hgb_interactions done
+fold=2 lr_base done
+fold=2 rf_base done
+fold=2 hgb_base done
+fold=2 lr_title done
+fold=2 rf_title done
+fold=2 hgb_title done
+fold=2 lr_family done
+fold=2 rf_family done
+fold=2 hgb_family done
+fold=2 lr_fare done
+fold=2 rf_fare done
+fold=2 hgb_fare done
+fold=2 lr_interactions done
+fold=2 rf_interactions done
+fold=2 hgb_interactions done
+fold=3 lr_base done
+fold=3 rf_base done
+fold=3 hgb_base done
+fold=3 lr_title done
+fold=3 rf_title done
+fold=3 hgb_title done
+fold=3 lr_family done
+fold=3 rf_family done
+fold=3 hgb_family done
+fold=3 lr_fare done
+fold=3 rf_fare done
+fold=3 hgb_fare done
+fold=3 lr_interactions done
+fold=3 rf_interactions done
+fold=3 hgb_interactions done
+fold=4 lr_base done
+fold=4 rf_base done
+fold=4 hgb_base done
+fold=4 lr_title done
+fold=4 rf_title done
+fold=4 hgb_title done
+fold=4 lr_family done
+fold=4 rf_family done
+fold=4 hgb_family done
+fold=4 lr_fare done
+fold=4 rf_fare done
+fold=4 hgb_fare done
+fold=4 lr_interactions done
+fold=4 rf_interactions done
+fold=4 hgb_interactions done
+                  mean_accuracy  std_accuracy  mean_log_loss  folds
+candidate
+dummy                  0.616163      0.002599       0.665918      5
+hgb_base               0.828297      0.033277       0.421927      5
+hgb_family             0.830538      0.028945       0.419995      5
+hgb_fare               0.833953      0.043257       0.419851      5
+hgb_interactions       0.835051      0.038004       0.428112      5
+hgb_title              0.826069      0.035975       0.416533      5
+lr_base                0.804739      0.012875       0.450803      5
+lr_family              0.824945      0.020431       0.424041      5
+lr_fare                0.818216      0.022968       0.427600      5
+lr_interactions        0.828316      0.026509       0.420051      5
+lr_title               0.824951      0.026713       0.423725      5
+nested_selection       0.820451      0.030309       0.417331      5
+rf_base                0.817086      0.026857       0.420028      5
+rf_family              0.833909      0.029776       0.415655      5
+rf_fare                0.828310      0.034803       0.415936      5
+rf_interactions        0.826069      0.032275       0.408598      5
+rf_title               0.831662      0.028826       0.417243      5

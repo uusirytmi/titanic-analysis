@@ -12,5 +12,5 @@ unzip titanic.zip -d data/
 
 - `train.csv` … 学習データ（891 行、Survived ラベル付き）
 - `test.csv`  … 予測対象（418 行）
-- `submission.csv` … 本プロジェクトの最終予測（RandomForest tuned, CV 0.8440）※リポジトリに含む
+- `submission.csv` … 過去の RandomForest tuned の予測ファイル（旧 CV 0.8440、Kaggle 採点未確認）※リポジトリに含む
 - `gender_submission.csv` … Kaggle 提供のサンプル提出形式

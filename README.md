@@ -1,108 +1,63 @@
 # Titanic Survival Prediction
 
-## 概要
-RMS Titanic の生存者予測モデル。
-データサイエンスにおける「人間の思考」と「自動化」の役割分担を実験。
+Titanic 教材を使い、モデルと特徴量を比較する実験リポジトリです。
+**最新の比較では、固定候補の外側 CV 最高値は 0.8351、内側で候補を選ぶ手順の外側評価は 0.8205 でした。Kaggle 採点は未確認です。**
 
-> **問い**: ドメイン知識で特徴量を設計する「人間」と、ハイパラ探索・アンサンブルを回す「自動化」は、それぞれどこまで精度を伸ばせるのか？そして、その限界はどこにあるのか？
+## 2026-10-12: fold 内前処理による比較
 
-## 結果サマリー
-- **Phase 1（人間が特徴量設計）**: CV Accuracy **0.8204**
-- **Phase 2（自動最適化ループ）**: CV Accuracy **0.8440**
-- **最終提出**: ランダムフォレスト **0.8440**
+[実験計画](experiments/PLAN.md)を実行前に固定しました。891 行のラベル付きデータに層化外側 5-fold、各学習部分に内側 3-fold を用い、15 候補を同じ分割で比較しました。探索は内側の平均 Accuracy、評価は未使用の外側 fold で行います。乱数 seed は 20261012（内側は 20261013 + fold 番号）。
 
-| フェーズ | 手法 | 5-fold CV Accuracy |
-|---|---|---|
-| Phase 1 (v1) | 基本整形 + LR/DT/RF | ~0.80 |
-| Phase 1 (v2) | 人間によるドメイン特徴量設計 | **0.8204** |
-| Phase 2 | GridSearch + XGBoost/LightGBM | **0.8440** |
-| Phase 2 | アンサンブル (Voting/Stacking) | 0.836–0.841（改善せず）|
+欠損補完、運賃の四分位境界、カテゴリ符号化、標準化を sklearn Pipeline 内で学習します。検証行や test の分布で基準値を作り直しません。氏名から敬称のみを抽出し、氏名・チケット ID・目的変数の集計は使いません。特徴量は累積追加、モデル設定は固定し、結果を見た追加探索はしていません。
 
-※ CV は層化 5-fold。`results/accuracy_comparison.csv` に全モデルの数値を記録。
+数値は外側 5-fold の平均 Accuracy。RF は120本、HGB は100反復です。
 
-## プロジェクト構成
-```
-titanic-analysis/
-├── README.md
-├── notebooks/      # 分析プロセスの完全記録
-│   ├── 01_eda.ipynb            # 初期探索
-│   ├── 02_v1_baseline.ipynb    # Phase 1: 基本分析 (0.8204)
-│   └── 03_v2_optimization.ipynb# Phase 2: 自動最適化ループ (0.8440)
-├── data/           # train/test/submission (train・test は .gitignore 対象)
-├── src/            # 再利用可能なコード
-│   ├── feature_engineering.py  # v1 / v2 特徴量生成
-│   ├── model_training.py       # モデル定義・GridSearch・アンサンブル
-│   └── evaluation.py           # CV評価・比較表・重要度プロット
-├── results/        # 結果・図表
-│   ├── accuracy_comparison.csv
-│   ├── feature_importance.png
-│   └── training_log.txt
-└── generate_results.py # results 一式を再生成するスクリプト
-```
+| 特徴量群（累積） | Logistic regression | Random forest | Histogram gradient boosting |
+|---|---:|---:|---:|
+| 基本 | 0.8047 | 0.8171 | 0.8283 |
+| + 敬称 | 0.8250 | 0.8317 | 0.8261 |
+| + 家族人数・単独 | 0.8249 | 0.8339 | 0.8305 |
+| + 対数運賃・家族当たり運賃・運賃区分 | 0.8182 | 0.8283 | 0.8340 |
+| + 性別×階級・敬称×階級・年齢×階級・子供 | 0.8283 | 0.8261 | **0.8351** |
 
-## 実行方法
+- **内側選択手順の外側評価: 0.8205 ± 0.0303**（fold間標本標準偏差）、平均 log loss 0.4173。
+- 固定候補の探索的最高値: HGB＋全特徴量 **0.8351 ± 0.0380**、平均 log loss 0.4281。
+- 多数派予測: 0.6162。HGBの基本特徴量から全特徴量への差は +0.0068、RFの基本から家族特徴量までの差は +0.0168。特徴量の追加で悪化する例もありました。
+- 計305 fit（内側225、固定候補の外側75、dummy 5）、約40.5秒、単一スレッド、失敗0件。時間は実行環境依存です。
+
+最高値 0.8351 は外側の結果を見た順位であり、それを採用した後の不偏な最終性能ではありません。候補選択を含めた評価は 0.8205 です。foldごとの選択は RF全特徴量 / RF全特徴量 / LR全特徴量 / HGB敬称 / RF運賃となりました。小標本かつfoldは相関するため、標準偏差を信頼区間と解釈せず、有意な改善とは主張しません。同一家族が異なるfoldに入る可能性があり、未知の家族への一般化は未検証です。次の試行には新たな評価設計が必要です。
+
+## 保存した証拠
+
+- [summary.csv](results/fold_safe/run1/summary.csv): 全候補の平均・標準偏差・log loss
+- [fold_scores.csv](results/fold_safe/run1/fold_scores.csv): fold別成績、選択候補、時間
+- [inner_scores.csv](results/fold_safe/run1/inner_scores.csv): 探索用225件の成績・時間
+- [oof.csv](results/fold_safe/run1/oof.csv): 行位置とOOF確率（乗客の氏名等は含めない）
+- [splits.json](results/fold_safe/run1/splits.json): 外側・内側の固定行位置
+- [manifest.json](results/fold_safe/run1/manifest.json): データ・コード・計画ハッシュ、バージョン、全設定、総時間
+- [failures.json](results/fold_safe/run1/failures.json): 失敗記録（今回は空）
+- [実行ログ](results/fold_safe/run1.log)、[実行時コード](results/fold_safe/run1/runner.py)
+
+`fold_scores.seconds` は固定候補では内側3fit＋外側fit＋test変換の経過秒数、nested_selectionではfold全体の経過秒数です。dummyの時間は未計測（0）。独立レビュー後、実験本体の予測ロジックは変えず、全候補失敗時のログ保存・失敗段階と時間・コード自動保存を補強しました。run1のハッシュは保存した実行時コードに対応します。
+
+## 再現・検査
+
 ```bash
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt        # macOS で XGBoost/LightGBM を使う場合は `brew install libomp` も必要
-
-# results 一式を再生成 (比較表・重要度図・ログ・submission)
-python generate_results.py
+python -m venv .venv
+source .venv/bin/activate
+pip install -r experiments/requirements.txt
+# Kaggle Titanic の train.csv / test.csv を data/ に配置
+python -m unittest discover -s tests -v
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m experiments.fold_safe --out results/fold_safe/new_run
+# 保存済みrun1と同じデータで整合性を検査
+python -m experiments.audit_results
 ```
-ノートブックで分析プロセスを追う場合:
-1. `notebooks/01_eda.ipynb` で初期探索
-2. `notebooks/02_v1_baseline.ipynb` で基本分析
-3. `notebooks/03_v2_optimization.ipynb` で最適化ループ
 
-## 学んだこと
+今回のローカル入力は[公開ミラー](https://github.com/agconti/kaggle-titanic/tree/master/data)から取得し、SHA256をmanifestに記録しました。元CSVはgitignore対象のままです。新しい実行は既存出力先を上書きしません。テストはfold外の極端値・未知カテゴリが学習済み統計に混入しないこと、同じ行の変換が同時入力の分布や順序に依存しないこと、cloneが各foldで再学習すること、全候補失敗時の記録を確認します。監査は全分割の非重複・包含、17方式×891行のOOF、選択規則、成績の再計算とハッシュを検査します。
 
-### Phase 1 の洞察（人間の思考）
-- Titanic の史実（女性・子供・階級優先）をドメイン知識として活用
-- Fare、Title、相互作用項など、有意義な特徴を設計
-- 結果：0.80 → 0.8204
+test.csv は各モデルの変換・予測が有限値になることだけを確認しました。提出ファイルの新規作成・Kaggle提出・採点、別seedでの反復、家族単位分割、外部検証は行っていません。
 
-### Phase 2 の気づき（自動化の限界）
-- RF、XGB が 0.844 で同値に収束
-- これは「データの本質的限界」を示唆
-- アンサンブル学習は多様性不足で改善できず
-- 実務的には「汎化性能の堅実性」を優先すべき
+## 過去の実験（評価条件が異なる参考記録）
 
----
+`notebooks/`、`src/`、`generate_results.py`、旧 `results/accuracy_comparison.csv` は過去の教材として残しています。旧スクリプトは全trainで前処理してからCVを行い、運賃のqcut境界もtrain/testで不一致になりえます。設定探索と評価の再利用もあるため、新規実験には上記のfold内Pipelineを使ってください。
 
-## 補足: 今回の分析での革新部分
-
-このプロジェクトの主眼は「スコアを 0.001 競う」ことではなく、**精度がどこで頭打ちになり、それが何を意味するのかを構造的に示す**ことにある。以下が特に新しい試み。
-
-### 1. 「人間 vs 自動化」を同一 CV 上で対照実験にした
-通常の Kaggle ノートは特徴量設計とチューニングが混ざりがち。本プロジェクトは
-**Phase 1（人間のドメイン設計）と Phase 2（機械的探索）を明確に分離**し、同じ層化 5-fold CV で測定することで「どちらがどれだけ寄与したか」を切り分けた。
-結果は **人間 +0.02（0.80→0.82）、自動化 +0.02（0.82→0.84）** と寄与がほぼ拮抗。
-
-### 2. 「相互作用項」が単独特徴を上回った定量的証拠
-特徴量重要度（`results/feature_importance.png`）で、手設計した **`Title_x_Pclass`（0.14）・`Sex_x_Pclass`・`Age_x_Pclass`** が
-生の `Sex` や `Pclass` 単独を上回って上位を占めた。
-「上流階級の女性・子供が生き残った」という史実が、**掛け算特徴という形で初めてモデルに伝わる**ことを示している。
-線形・木モデルが暗黙に取りこぼす非線形効果を、人間の仮説で明示的に補ったのが効いた。
-
-### 3. 停止条件つき自動最適化ループ（暴走しない自動化）
-AutoML 的な探索を **3 つの停止条件**（3 連続改善なし / 最大 10 回 / 0.95 到達）で囲い、
-「いつ止めるか」を設計に組み込んだ。実際は **3 連続改善なし** で正常終了し、
-無駄な計算を避けつつ「これ以上伸びない」ことを能動的に検出できた。
-
-### 4. アンサンブルの「失敗」を成果として記録
-7 種の Voting/Stacking を試して**いずれも個別モデル（0.844）を超えられなかった**。
-これは失敗ではなく **「構成モデルの予測が高相関＝多様性が枯渇している」という診断**であり、
-複数の独立手法が同じ 0.844 に収束する事実とあわせて、**0.84 付近が Titanic データの説明限界**であることの傍証になった。
-
-### 5. data leakage を構造的に防ぐ設計
-全ての欠損補填（Age 中央値・Embarked 最頻値・Fare 中央値）と
-カテゴリ集計（Ticket グループ数等）の**基準値を必ず train から計算して test に適用**する設計を
-`src/feature_engineering.py` に固定。再利用時にもリークが混入しない。
-
-> **結論**: 0.844 は「敗北」ではなく**実力上限の発見**である。
-> モデルを増やすより、限界を正しく認識して堅実なモデルを選ぶことが、実務では正解になる。
-
-## 今後の展開
-- [ ] 他のコンペでこのフレームワークを適用
-- [ ] ブログで思考プロセスを詳述
-- [ ] 分析テンプレート化
-- [ ] 姓ベースの家族生存グループ特徴（leakage 境界の検証）
+保存CSVのRFは基本特徴量 **0.799071**、特徴量追加 **0.819277**、調整後 **0.843977**、XGBoostは **0.843971** でした。以前のREADMEの0.8204という説明は特徴量追加RFの保存値と一致していませんでした。0.844はKaggleスコアではなく旧CV値です。今回との直接の改善比較や「データの実力上限」の証明には使えません。`should_stop` は旧実行経路で未使用であり、自動停止が実行されたという以前の記述も取り下げます。旧 `data/submission.csv` は保存済み予測ファイルで、採点済みである証拠はありません。

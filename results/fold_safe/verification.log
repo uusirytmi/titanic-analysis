@@ -1,0 +1,12 @@
+test_all_failed_candidates_are_persisted (test_fold_safe.FailureRecording.test_all_failed_candidates_are_persisted) ... fold=0 deliberate_failure done
+ok
+test_clone_refits_on_training_fold_and_ignores_target (test_fold_safe.FoldSafety.test_clone_refits_on_training_fold_and_ignores_target) ... ok
+test_statistics_and_categories_exclude_validation (test_fold_safe.FoldSafety.test_statistics_and_categories_exclude_validation) ... ok
+test_transform_is_independent_of_batch_distribution_and_order (test_fold_safe.FoldSafety.test_transform_is_independent_of_batch_distribution_and_order) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.248s
+
+OK
+PASS: hashes, 5 outer/15 inner splits, 225 inner scores, 85 fold scores,
+17 x 891 OOF records, nested choices/probabilities and all saved metrics.
