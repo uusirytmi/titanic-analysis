@@ -14,3 +14,6 @@ venv/
 .DS_Store
 .vscode/
 .idea/
+
+# Locally retrieved historical records; no raw redistribution
+data/external/

@@ -1,0 +1,30 @@
+{
+  "train": {
+    "rows": 891,
+    "matched": 891,
+    "label_conflicts": 0,
+    "unresolved": 0
+  },
+  "test": {
+    "rows": 418,
+    "matched": 418,
+    "unresolved": 0
+  },
+  "source_rows": 1309,
+  "composite_duplicate_groups": 0,
+  "name_only_duplicate_groups": 2,
+  "unused_source_rows": 0,
+  "submission_candidate_complete": true,
+  "kaggle_score": null,
+  "test_label_leakage": true,
+  "machine_learning_metric": false,
+  "canonical_bytes_verified": false,
+  "sha256": {
+    "external": "db6df9666818c69a753cd85d743e01502c8518b00579b6aada0d4fc5a66ccb9d",
+    "train": "4a437fde05fe5264e1701a7387ac6fb75393772ba38bb2c9c566405af5af4bd7",
+    "test": "5c78320a80dc159b35c408363be46a5d93f078183d539db75ee42a796d6a4e95",
+    "code": "062ffd485646d055cb114cfe16ade02355a280b5245c1069c4530bdfa7260e29",
+    "provenance": "890da84bf3252e27e342255a2641df480d754ff1b74aaa0b77d4011a0be06626"
+  }
+}
+PASS: 1309 unique source assignments, train labels, all 418 candidate rows and byte-identical reproduction. No Kaggle score established.

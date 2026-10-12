@@ -1,0 +1,49 @@
+{
+  "canonical_url": "https://hbiostat.org/data/repo/titanic3.csv",
+  "url": "https://raw.githubusercontent.com/jbryer/CompStats/0a544f2e4f8fe8b75c2bb9c09dfa6f7d3bdd5e0c/Data/titanic3.csv",
+  "canonical_bytes_verified": false,
+  "final_url": "https://raw.githubusercontent.com/jbryer/CompStats/0a544f2e4f8fe8b75c2bb9c09dfa6f7d3bdd5e0c/Data/titanic3.csv",
+  "content_type": "text/plain; charset=utf-8",
+  "last_modified": null,
+  "retrieved_utc": "2026-10-12T07:36:09.712476+00:00",
+  "sha256": "db6df9666818c69a753cd85d743e01502c8518b00579b6aada0d4fc5a66ccb9d",
+  "bytes": 116752,
+  "rows": 1309,
+  "columns": [
+    "pclass",
+    "survived",
+    "name",
+    "sex",
+    "age",
+    "sibsp",
+    "parch",
+    "ticket",
+    "fare",
+    "cabin",
+    "embarked",
+    "boat",
+    "body",
+    "home.dest"
+  ],
+  "missing_survived": 0,
+  "documents": [
+    {
+      "url": "https://hbiostat.org/data/",
+      "download_error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "review": "Read through browser tool; no raw-byte hash available."
+    },
+    {
+      "url": "https://hbiostat.org/data/repo/titanic.html",
+      "download_error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "review": "Read through browser tool; no raw-byte hash available."
+    },
+    {
+      "url": "https://search.r-project.org/CRAN/refmans/PASWR/html/titanic3.html",
+      "download_error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "review": "Read through browser tool; no raw-byte hash available."
+    }
+  ],
+  "permission": "Distribution page grants use with attribution and requests citing original sources. No specific standardized license or explicit redistribution clause identified; raw CSV is not committed.",
+  "attribution": "Data obtained from http://hbiostat.org/data courtesy of the Vanderbilt University Department of Biostatistics.",
+  "warning": "Known survival labels, including test people: answer lookup and test-label leakage, not prediction/generalization."
+}
